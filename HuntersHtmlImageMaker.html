@@ -1,0 +1,40 @@
+Please Make Sure Your Images are numbered 1,2,3,4,5,6..... and they are located in a folder named "images". 
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="myForm" action="form_action.asp">
+# of Images: <input type="text" name="ImageLocation"><br>
+Image Width: <input type="text" name="ImageWidth"><br><br>
+<input type="button" onclick="myFunction()" value="Submit form">
+</form>
+
+<script>
+
+function nextimage(x,y)
+{
+  var txt = "";
+  for (var i=1; i<=x; i++)
+    {
+    txt = txt + "<h2>" + i + ".  </h2><img src='images/" + i + ".jpg" + "' width='" + y + "px'></a><br><br>";
+    }
+  return txt;
+}
+
+function myFunction()
+{
+  var imgloc=document.getElementById("myForm");
+  x = imgloc.elements[0].value;
+  y = imgloc.elements[1].value;
+  imgnames = nextimage(x,y);
+  var doc=document.open("text/html","replace");
+  var txt="<html><body background='Hunters.jpg'>" + imgnames + "</body></html>";
+  doc.write(txt);
+  doc.close();
+}
+</script>
+
+</body>
+</html>
